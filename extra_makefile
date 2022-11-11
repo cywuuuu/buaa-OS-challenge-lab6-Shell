@@ -1,0 +1,25 @@
+
+INCLUDES	  := -I../include/
+
+# ======== End of configuration ===
+
+%.o: %.S
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< 
+
+.PHONY: clean
+
+all: calculator.o
+
+clean:
+	rm -rf *~ *.o
+
+include ../include.mk
+int main()
+{
+	printf("main.c:\tmain is start ...\n");
+	calculator();
+	//mips_init();
+	panic("main is over is error!");
+
+	return 0;
+}
